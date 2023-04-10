@@ -8,8 +8,6 @@
  * @param {Object|String}       [options.customLabels]
  * @param {Object}              [options.collation]
  * @param {Array|Object|String} [options.populate]
- * @param {Boolean}             [options.lean=false]
- * @param {Boolean}             [options.leanWithId=true]
  * @param {Number}              [options.offset=0] - Use offset or page to set skip position
  * @param {Number}              [options.page=1]
  * @param {Number}              [options.limit=10]
@@ -38,8 +36,6 @@ const defaultOptions = {
     meta: null,
   },
   collation: {},
-  lean: false,
-  leanWithId: true,
   limit: 10,
   projection: {},
   select: '',
@@ -62,8 +58,6 @@ function paginate(query, options, callback) {
 
   const {
     collation,
-    lean,
-    leanWithId,
     populate,
     projection,
     read,
@@ -161,7 +155,6 @@ function paginate(query, options, callback) {
 
     mQuery.select(select);
     mQuery.sort(sort);
-    mQuery.lean(lean);
 
     if (read && read.pref) {
       /**
@@ -191,17 +184,6 @@ function paginate(query, options, callback) {
     }
 
     docsPromise = mQuery.exec();
-
-    if (lean && leanWithId) {
-      docsPromise = docsPromise.then((docs) => {
-        docs.forEach((doc) => {
-          if (doc._id) {
-            doc.id = String(doc._id);
-          }
-        });
-        return docs;
-      });
-    }
   }
 
   return Promise.all([countPromise, docsPromise])

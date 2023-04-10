@@ -30,8 +30,6 @@ declare module 'mongoose' {
     | PopulateOptions
     | undefined;
     projection?: any;
-    lean?: boolean | undefined;
-    leanWithId?: boolean | undefined;
     offset?: number | undefined;
     page?: number | undefined;
     limit?: number | undefined;
@@ -93,11 +91,7 @@ declare module 'mongoose' {
     TMethods,
     TVirtuals,
     O extends PaginateOptions = {}
-  > = O['lean'] extends true
-    ? O['leanWithId'] extends true
-    ? LeanDocument<T & { id: string }>
-    : LeanDocument<T>
-    : HydratedDocument<T, TMethods, TVirtuals>;
+  > = HydratedDocument<T, TMethods, TVirtuals>
 
   interface PaginateModel<T, TQueryHelpers = {}, TMethods = {}>
     extends Model<T, TQueryHelpers, TMethods> {

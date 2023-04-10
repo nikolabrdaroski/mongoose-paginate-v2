@@ -141,7 +141,7 @@ describe('mongoose-paginate', function () {
     });
   });
 
-  afterEach(function () {});
+  afterEach(function () { });
 
   it('promise return test', function () {
     let promise = Book.paginate();
@@ -166,7 +166,6 @@ describe('mongoose-paginate', function () {
     var options = {
       limit: 10,
       page: 5,
-      lean: true,
     };
 
     return Book.paginate(query, options).then((result) => {
@@ -193,7 +192,6 @@ describe('mongoose-paginate', function () {
     var options = {
       limit: 200,
       page: 1,
-      lean: true,
     };
 
     return Book.paginate(query, options).then((result) => {
@@ -221,7 +219,6 @@ describe('mongoose-paginate', function () {
       offset: 1,
       limit: 200,
       page: 1,
-      lean: true,
     };
 
     return Book.paginate(query, options).then((result) => {
@@ -248,7 +245,6 @@ describe('mongoose-paginate', function () {
     var options = {
       limit: 10,
       page: 1,
-      lean: true,
     };
 
     return Book.paginate(query, options).then((result) => {
@@ -275,7 +271,6 @@ describe('mongoose-paginate', function () {
     var options = {
       limit: 10,
       page: 10,
-      lean: true,
     };
 
     return Book.paginate(query, options).then((result) => {
@@ -305,7 +300,6 @@ describe('mongoose-paginate', function () {
       sort: {
         _id: 1,
       },
-      lean: true,
     };
 
     return Book.paginate(query, options).then((result) => {
@@ -335,7 +329,6 @@ describe('mongoose-paginate', function () {
       sort: {
         _id: 1,
       },
-      lean: true,
     };
 
     return Book.paginate(query, options).then((result) => {
@@ -368,7 +361,6 @@ describe('mongoose-paginate', function () {
         locale: 'en',
         strength: 2,
       },
-      lean: true,
     };
 
     return Book.paginate(query, options).then((result) => {
