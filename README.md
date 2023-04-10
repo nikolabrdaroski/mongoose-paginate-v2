@@ -85,8 +85,6 @@ Returns promise
   - `[sort]` {Object | String} - Sort order. [Documentation](http://mongoosejs.com/docs/api.html#query_Query-sort)
   - `[populate]` {Array | Object | String} - Paths which should be populated with other documents. [Documentation](http://mongoosejs.com/docs/api.html#query_Query-populate)
   - `[projection]` {String | Object} - Get/set the query projection. [Documentation](https://mongoosejs.com/docs/api/query.html#query_Query-projection)
-  - `[lean=false]` {Boolean} - Should return plain javascript objects instead of Mongoose documents? [Documentation](http://mongoosejs.com/docs/api.html#query_Query-lean)
-  - `[leanWithId=true]` {Boolean} - If `lean` and `leanWithId` are `true`, adds `id` field with string representation of `_id` to every document
   - `[offset=0]` {Number} - Use `offset` or `page` to set skip position
   - `[page=1]` {Number}
   - `[limit=10]` {Number}
@@ -257,7 +255,6 @@ var options = {
   select: 'title date author',
   sort: { date: -1 },
   populate: 'author',
-  lean: true,
   offset: 20,
   limit: 10,
 };
@@ -287,7 +284,6 @@ config.js:
 var mongoosePaginate = require('mongoose-paginate-v2');
 
 mongoosePaginate.paginate.options = {
-  lean: true,
   limit: 20,
 };
 ```
@@ -346,7 +342,6 @@ Determines the MongoDB nodes from which to read.
 
 ```js
 const options = {
-  lean: true,
   limit: 10,
   page: 1,
   read: {
@@ -424,7 +419,6 @@ But we have added another option. So if you need to use $near and $nearSphere pl
 
 ```js
 const options = {
-  lean: true,
   limit: 10,
   page: 1,
   forceCountFn: true,

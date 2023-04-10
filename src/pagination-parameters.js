@@ -72,8 +72,6 @@ class PaginationParametersHelper {
       sort = this.query.sort,
       populate = this.query.populate,
       projection = this.query.projection,
-      lean = this.query.lean,
-      leanWithId = this.query.leanWithId,
       offset = this.query.offset,
       page = this.query.page,
       limit = this.query.limit,
@@ -93,9 +91,6 @@ class PaginationParametersHelper {
     if (populate) options['populate'] = this.optObjectOrString(populate);
     if (projection !== undefined)
       options['projection'] = this.optObjectOrString(projection);
-    if (lean !== undefined) options['lean'] = this.booleanOpt(lean);
-    if (leanWithId !== undefined)
-      options['leanWithId'] = this.booleanOpt(leanWithId);
     if (offset) options['offset'] = Number(offset);
     if (page) options['page'] = Number(page);
     if (limit) options['limit'] = Number(limit);
